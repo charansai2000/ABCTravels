@@ -45,7 +45,7 @@ public class Main implements Comparator<Locations>{
 	    loc.put(location2.source, location2);
 	    loc.put(location3.source, location3);
 	    loc.put(location4.source, location4);
-		travels();
+		Main.travels();
 		}
 	public static void travels() throws IOException {
 		Scanner sc=new Scanner(System.in);
@@ -62,21 +62,29 @@ public class Main implements Comparator<Locations>{
 			System.out.println("Enter 2 for Login");
 			System.out.println("Enter 3 for Travel");
 			System.out.println("Enter 4 for Travel Date Modifications");
+			System.out.println("enter 5 to exit");
 			
 			int option=sc.nextInt();
+			
 			switch(option) {
 			case 1:
 				registration();
+				System.out.println("Registration Successful");
 				break;
 			case 2:
 				logIn();
+				
 				break;
 			case 3:
 				travelBooking();
+				
 				break;
 			case 4:
 				dateModification();
 				break;
+			case 5:
+				System.exit(0);
+				
 			}
 		}
 		
@@ -107,6 +115,7 @@ public class Main implements Comparator<Locations>{
 		user1.setPassword(sc.nextLine());
 		
 		map.put(gmail, user1);
+		
 
 	}
 	public static void logIn() throws IOException {
@@ -132,6 +141,7 @@ public class Main implements Comparator<Locations>{
 			logIn();
             }
 		}
+	
 		
 		
 	}
@@ -146,6 +156,7 @@ public class Main implements Comparator<Locations>{
 		System.out.println("Please enter your Travel Date in yyy/mm/dd format ");
 		userinput.date=sc.nextLine();
 		travelBookingOperation();
+		
 		
 		
 	}
@@ -199,6 +210,7 @@ public class Main implements Comparator<Locations>{
 		Scanner sc=new Scanner(System.in);
 		userinput.date=sc.nextLine();
 		travelBookingOperation();
+		
 		
 	}
 	@Override
