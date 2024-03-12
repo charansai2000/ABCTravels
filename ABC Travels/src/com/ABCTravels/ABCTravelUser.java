@@ -13,6 +13,12 @@ public class ABCTravelUser {
 	private String accountStatus;
 	
 	//Getters
+	public String getFirstName() {
+		return this.firstname;
+	}
+	public String getLastName() {
+		return this.lastname;
+	}
 	public String getName() {
 		return this.firstname +" "+this.lastname;
 	}
