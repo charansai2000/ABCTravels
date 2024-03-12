@@ -24,7 +24,7 @@ public class Main implements Comparator<Locations>{
 	static Map<String,Locations> loc=new HashMap<>();
 	static Set<Locations> sourceDest=new HashSet<>();
  	static int exitPointer=1;
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException,SQLException {
 		location.source="Vijayawada";
 	    location.destination="Tiruvuru";
 	    location.cost=399;
@@ -47,7 +47,7 @@ public class Main implements Comparator<Locations>{
 	    loc.put(location4.source, location4);
 		Main.travels();
 		}
-	public static void travels() throws IOException {
+	public static void travels() throws IOException,SQLException {
 		Scanner sc=new Scanner(System.in);
 		FileInputStream fs=new FileInputStream("banner.txt");
 		int i=0;
@@ -89,7 +89,7 @@ public class Main implements Comparator<Locations>{
 		}
 		
 	}
-	public static void registration() {
+	public static void registration() throws SQLException {
 		
 		Scanner sc=new Scanner(System.in);
 		
@@ -115,17 +115,26 @@ public class Main implements Comparator<Locations>{
 		user1.setPassword(sc.nextLine());
 		
 		map.put(gmail, user1);
+		DButils.database(user1);
 		
 
 	}
-	public static void logIn() throws IOException {
+	public static void logIn() throws IOException, SQLException {
 		Scanner sc=new Scanner(System.in);
 		int i=0;
 		System.out.println("please enter your gmail to login");
 		String userGmailInput=sc.nextLine();
 		System.out.println("Please enter your password to log in");
 		String pass=sc.nextLine();
-		if((user1.getGmail().equalsIgnoreCase(userGmailInput) && user1.getPassword().equals(pass))) {
+		String verify=DButils.validation(userGmailInput, pass);
+		if(verify=="present") {
+			System.out.println("successfully loggedin");
+		}
+		else {
+			System.out.println("failed to logged in enter valid emailid");
+			logIn();
+		}
+		/*if((user1.getGmail().equalsIgnoreCase(userGmailInput) && user1.getPassword().equals(pass))) {
 			System.out.println("successfully loggedin");
 		}
 		else {
@@ -140,7 +149,7 @@ public class Main implements Comparator<Locations>{
             else {
 			logIn();
             }
-		}
+		}*/
 	
 		
 		
