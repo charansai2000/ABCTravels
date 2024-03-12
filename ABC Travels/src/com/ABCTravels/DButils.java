@@ -9,9 +9,9 @@ import java.sql.SQLException;
 public class DButils {
 	
 	public static void database(ABCTravelUser atu) throws SQLException {
-		String link="jdbc:mysql://localhost:3306/abc";
+		String link="connectionLink";
 		String username="root";
-		String password="SEETHAsobha@SOMU1310";
+		String password="Your Password";
 		Connection con=DriverManager.getConnection(link,username,password);
 		String query="insert into Travellers(FirstName,LastName,mobileNumber,gender,gmail,password) values(?,?,?,?,?,?)";
 		
@@ -26,9 +26,9 @@ public class DButils {
 		
 	}
 	public static String validation(String username, String password) throws SQLException {
-		String link="jdbc:mysql://localhost:3306/abc";
-		String Username="root";
-		String Password="SEETHAsobha@SOMU1310";
+		String link="connectionLink";
+		String username="root";
+		String password="Your Password";
 		int i=0;
 		Connection con=DriverManager.getConnection(link,Username,Password);
 		String query="select count(*) from travellers where gmail=? and password=? ";
